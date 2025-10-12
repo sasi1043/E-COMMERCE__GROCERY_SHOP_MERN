@@ -1,0 +1,195 @@
+import {  useEffect, useState } from 'react';
+import NavBar from '../../components/NavBar';
+import axios from 'axios';
+import Rating from '@mui/material/Rating';
+import { useCart } from '../../context/CartContext';
+
+const API="http://localhost:4000"
+
+function AllTimeBest() {
+
+    const {addCart}=useCart();  
+
+   const[alltime,setAlltime]=useState([]);
+    
+    async function load(){
+        try{
+            const res =await axios.get(`${API}/api/products/AllTimeBest`);
+            setAlltime(res.data);
+        }
+        catch(e){
+            console.error(e);
+        }
+    }
+    
+    useEffect(()=>{
+        load();
+    },[])
+    
+
+
+
+  return (
+    <>
+    {/* Navbar */}
+       <div className='container-fluid fixed-top bg-white'>
+      <NavBar/>
+       
+      <h3 className='mt-3'>Healthy Dairy Products</h3>
+       <div className='container-fluid' >
+      {/* Heading tag */}
+      
+
+      <div className='row bg-white' >
+        <div className='col-md-6'>
+      <div className='d-flex' >
+        
+        <div className=' mt-2 bg-light p-2 rounded'>
+           <form >
+            <div className='mt-1' >
+             <input type='radio'  name='poular' className='radioinput'></input>
+             <label style={{marginLeft:"5px"}} for="Popular">Most Popular</label>
+             
+             <input style={{marginLeft:"10px"}} type='radio'   name='poular' className='radioinput'></input>
+             <label style={{marginLeft:"5px"}}  for="Popular">Cheapest</label>
+             </div>
+           </form>
+        </div>
+
+        {/* Filter section */}
+        <div className='mx-2 mt-2 bg-light p-2 rounded' >
+           <form className='mt-1' >
+             <input style={{marginLeft:"5px"}} type='radio'  name='poular' ></input>
+             <label style={{marginLeft:"5px"}}  for="Popular">Organic Farm</label>
+           </form>
+        </div>
+        <div className='mx-2 mt-2 bg-light p-2 rounded'>
+           <form >
+             <select className='form-control' >
+              <option>India</option>
+              <option>Japan</option>
+              <option>China</option>
+              <option>America</option>
+             </select>
+           </form>
+        </div>
+        </div>
+        </div>
+        <span className='col-md-4'></span>
+        <div className='col-md-2' style={{textAlign:"right"}}>
+        
+
+        {/* sideBar  with categories , brands  and rating*/}
+        </div>
+      </div>
+      </div>
+      </div>
+
+
+      <div className='container-fluid row' style={{marginTop:"180px"}}>
+        <div className='col-md-3 ' >
+      <div className='container  mt-2 rounded' style={{height:"550px",width:"300px",position:"fixed",backgroundColor:"white",border:"solid lightgray 1px"}}>
+        <div >
+          <h5 className='mt-3 ms-3'>Categories</h5>
+          <div className='ms-5'>
+          <p>NoteBook</p>
+          <p></p>
+          <p>Chees & paneer</p>
+          <p>Milk Poweders</p>
+          </div>
+        </div>
+        <div >
+          <h5 className='mt-3 ms-3'>Brands</h5>
+          <div className='ms-5'>
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+              <label for="tropicana" className='form-label mx-2 '>Amul</label>
+            </div>
+          
+           
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+              <label for="tropicana" className='form-label mx-2 '>Aavin</label>
+            </div>
+          
+           
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+              <label for="tropicana" className='form-label mx-2 '>Britania</label>
+            </div>
+          
+           
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+              <label for="tropicana" className='form-label mx-2 '>Nestle</label>
+            </div>
+          
+           
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+              <label for="tropicana" className='form-label mx-2 '>Mother Diary</label>
+            </div>
+          
+          
+          </div>
+        </div>
+
+        <div >
+          <h5 className='mt-3 ms-3'>Rating</h5>
+          <div className='ms-5'>
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+               <Rating className='ms-2' name="size-small" defaultValue={5} size="small" /><br></br>
+            </div>
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+               <Rating className='ms-2' name="size-small" defaultValue={4} size="small" /><br></br>
+            </div>
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+               <Rating className='ms-2' name="size-small" defaultValue={3} size="small" /><br></br>
+            </div>
+            <div>
+              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
+               <Rating className='ms-2' name="size-small" defaultValue={2} size="small" /><br></br>
+            </div>
+                
+          </div>
+        </div>
+
+       </div>
+        {/* Sidebar ends */}
+      </div>
+      
+      {/* Products - fruit display starts */}
+     <div className='col-md-9 mt-2'>
+      <div className='row gy-5'>
+        {alltime.map((st)=>(
+          <div className='col-12 col-sm-6 col-md-3' key={st._id}>
+          <div className='card border-secondary' style={{maxWidth:"250px"}}>
+            <div className='card-header' style={{textAlign:"center"}}>
+              <img src={`${API}/${st.path}`} alt='Healthcare' height={150} width={150}></img>
+            </div>
+            <div className='card-body'>
+              <h6>{st.name}</h6>
+              <p>{st.description}</p>
+              <Rating  name="size-small" defaultValue={st.rating} style={{color:"black"}} size="small" />
+              <div className='d-flex justify-content-between  align-items-center'>
+                <h6  className='mt-1 fw-bold'>₹ {st.price}/packet</h6>
+                <button style={{borderRadius:"25px" ,backgroundColor:"black",color:"white"}} onClick={()=>addCart(st)}>Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        ))}
+        
+      </div>
+     </div>
+
+      </div>
+    
+    </>
+  )
+}
+
+export default AllTimeBest
