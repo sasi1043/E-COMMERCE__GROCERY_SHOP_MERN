@@ -29,3 +29,64 @@ code {
   padding: 5px;
   border-radius: 10px;
 }
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    flex: 1;
+  }
+
+  .navbar .container-fluid {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between {
+    flex-wrap: wrap !important;
+  }
+
+  /* Row 1: Brand + Toggle + Cart */
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between > .navbar-brand,
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between > .navbar-toggler,
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between > .d-none.d-lg-flex.align-items-center.ms-auto {
+    order: 1;
+    display: inline-flex !important;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  /* Search bar moves to next row */
+  .navbar .container-fluid form.d-flex {
+    order: 2;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .navbar .container-fluid form.d-flex input {
+    width: 100%;
+  }
+
+  .navbar .container-fluid form.d-flex button {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar .navbar-toggler {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    outline: none;
+    background: transparent !important;
+  }
+
+  .navbar .container-fluid {
+    position: relative;
+  }
+}
+
+@media (max-width: 1000px){
+ .sidebar{
+  display: none;
+ }
+}

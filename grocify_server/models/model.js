@@ -206,8 +206,71 @@ const NewProdSchema=mongoose.Schema({
 const NewProdModel=mongoose.model("NewProducts",NewProdSchema);
 //end of  choc model
 
+//model for Daily essential products
+
+const DailyEssSchema=mongoose.Schema({
+    name:{type:String,required:true},
+    path:{type:String,required:true},
+    filename:{type:String,required:true},
+    description:{type:String,required:true},
+    rating:{type:String,required:true},
+    price:{type:String,required:true},
+    measure:{type:String,required:false}
+});
+
+const DailyEssModel=mongoose.model("DailyEssentials",DailyEssSchema);
+
+
+//model for Daily cooking ingredients products
+
+const cookingSchema=mongoose.Schema({
+    name:{type:String,required:true},
+    path:{type:String,required:true},
+    filename:{type:String,required:true},
+    description:{type:String,required:true},
+    rating:{type:String,required:true},
+    price:{type:String,required:true},
+    measure:{type:String,required:false}
+});
+
+const cookingModel=mongoose.model("cooking",cookingSchema);
+
+
+//model for Daily cooking ingredients products
+
+const KidsSchema=mongoose.Schema({
+    name:{type:String,required:true},
+    path:{type:String,required:true},
+    filename:{type:String,required:true},
+    description:{type:String,required:true},
+    rating:{type:String,required:true},
+    price:{type:String,required:true},
+    measure:{type:String,required:false}
+});
+
+const KidsModel=mongoose.model("KidsFavourite",KidsSchema);
+
+
+//for searchbar
+const modelsearch=mongoose.Schema({
+     name:{type:String,required:true},
+    path:{type:String,required:true},
+    filename:{type:String,required:true},
+    description:{type:String,required:true},
+    measure:{type:String,required:false},
+    rating:{type:String,required:true},
+    price:{type:String,required:true}
+})
+
+const search=mongoose.model("searchbar",modelsearch)
+//searchbar end
+
 
 module.exports={FrozenModel,
+    KidsModel,
+    cookingModel,
+    DailyEssModel,
+    search,
     NewProdModel,
     AllTImeBestModel,
     DairyModel,

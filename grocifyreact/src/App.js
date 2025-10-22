@@ -20,7 +20,10 @@ import CartProvider from './context/CartContext';
 import CartView from './pages/CartView';
 import LoginContext from './context/LoginContext';
 import Confirm from './pages/Confirm';
-import AllTimeBest from './pages/products/AllTimeBest'
+import SearchProducts from './components/SearchProducts';
+import DailyEssentials from './pages/products/DailyEssentials';
+import Cooking from './pages/products/Cooking';
+import Kids from './pages/products/Kids';
 
 function App() {
   
@@ -45,9 +48,12 @@ function App() {
         <Route path='/choco' element={<Chocolates/>}></Route>
         <Route path='/biscut' element={<Biscuit/>}></Route>
         <Route path='/stationary' element={<Stationary/>}></Route>
-        <Route path='/AllTimeBest' element={<AllTimeBest/>}></Route>
         <Route path='/cartView' element={<CartView/>}></Route>
         <Route path='/paymentSuccess'  element={<Confirm/>}></Route>
+        <Route path='/DailyEssentials'  element={<DailyEssentials />}></Route>
+        <Route path='/CookingIngredients'  element={<Cooking />}></Route>
+        <Route path='/KidsFavourites'  element={<Kids />}></Route>
+        <Route path='/searchProducts'  element={<SearchProducts />}></Route>
       </Routes>
       </LoginContext>
       </CartProvider>

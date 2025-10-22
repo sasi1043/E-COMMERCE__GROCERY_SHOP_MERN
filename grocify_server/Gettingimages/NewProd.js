@@ -24,7 +24,7 @@ router.get('/',async(req,res)=>{
         console.error({error:e.message})
     }
     
-})
+});
 
 router.post('/',NewProdStorage.single("NewProducts"),async(req,res)=>{
     try {
@@ -43,6 +43,6 @@ router.post('/',NewProdStorage.single("NewProducts"),async(req,res)=>{
     } catch (error) {
         
     }
-})
+});
 
 module.exports=router;

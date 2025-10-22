@@ -6,7 +6,7 @@ import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 
 
-const API="http://localhost:4000"
+const API=process.env.REACT_APP_BACKEND_URL;
 
 
 

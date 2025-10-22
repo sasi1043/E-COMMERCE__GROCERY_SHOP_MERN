@@ -8,14 +8,16 @@ import { IconButton } from '@mui/material';
 import axios from 'axios';
 import { useLoginVerify } from '../context/LoginContext';
 import { useTheme } from '../context/ThemeContext';
+import { useNavigate } from 'react-router-dom';
 
-const API="http://localhost:4000"
+const API=process.env.REACT_APP_BACKEND_URL;
 
 
 function CartView() {
   const {theme} =useTheme();
     const {cart,removeCart} =useCart();
     const{mobile,user,email}=useLoginVerify() || {};
+    const navigate=useNavigate();
     // Store quantities for each item
  const [counts, setCounts] = useState(() => {
     const savedCounts = localStorage.getItem("cartCounts");
@@ -102,7 +104,7 @@ const totalPrice = cart.reduce((total, item) => {
 
   return (
     <>
-     <div className='container-fluid fixed-top'  style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+     <div className='container-fluid fixed-top '  style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
       <h3 className='mt-3 ms-3'>My Cart</h3>
@@ -150,7 +152,7 @@ const totalPrice = cart.reduce((total, item) => {
         
       </div>
     ):(
-      <div className='container-fluid row ms-0' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"120px",marginBottom:"90px"}}>
+      <div className='container-fluid row ms-0 vh-100' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"120px",marginBottom:"90px"}}>
             <div className='row gy-5'>
               {cart.map((item)=>(
                 <div className='col-12 col-sm-6 col-md-3 pb-4' key={item._id}>
@@ -196,7 +198,11 @@ const totalPrice = cart.reduce((total, item) => {
      
         <div >
         <h4 className='ms-1 mb-3'>₹{totalPrice}</h4>
-         <Button variant='contained bg-dark text-white me-5 mb-1' onClick={()=>buynowBut(totalPrice,user,email,mobile)}>Buy Now</Button>
+         <Button variant='contained bg-dark text-white me-5 mb-1' onClick={()=>{
+          user?(buynowBut(totalPrice,user,email,mobile)):(
+            navigate('/login')     
+          )
+          }}>Buy Now</Button>
          </div>
 
       </div>

@@ -7,6 +7,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+//for profile menu
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 // theme
 import Switch from '@mui/material/Switch';
@@ -21,14 +24,24 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useCart } from '../context/CartContext';
 import Badge from '@mui/material/Badge';
+import SearchList from './SearchList';
+import { useState } from 'react';
+import axios from 'axios';
+import { useLoginVerify } from '../context/LoginContext';
+
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+const API="http://localhost:4000"
 
 function NavBar() {
   const navigate=useNavigate();
 
+  const[result,setResults]=useState([])
 
   const {cart}=useCart();
+
+  const {logout}=useLoginVerify()
 
   const { theme, toggletheme } = useTheme();
 
@@ -42,6 +55,34 @@ function NavBar() {
   const handleNavigate=(path)=>{
     navigate(path)
   }
+
+
+       const[input,setInput]=useState("");
+
+      async function fetch(value){
+        const query=value;
+        const res=await axios.post(`${API}/api/search`,{query});
+        setResults(res.data.prod)
+      }
+
+      const handlechange=(value)=>{
+        setInput(value)
+         if (value.trim().length === 0) {
+    setResults(null);
+    return;
+  }
+        fetch(value)
+      }
+
+      //for profile button menu
+        const [anchorEl, setAnchorEl] = useState(null)
+  const op = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <div className="container-fluid">
@@ -66,14 +107,11 @@ function NavBar() {
               title={<span >Products</span>}
               id="desktopProductsDropdown"
             >
-              <NavDropdown.Item href="#action3">Daily Essentials</NavDropdown.Item>
-              <NavDropdown.Item onClick={()=>handleNavigate("/AllTimeBest")} >Cooking Ingredients</NavDropdown.Item>
-              <NavDropdown.Item href="#action3">Kids Favorites</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Gifting Products</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>handleNavigate("/DailyEssentials")}>Daily Essentials</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>handleNavigate("/CookingIngredients")} >Cooking Ingredients</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>handleNavigate("/KidsFavourites")}>Kids Favorites</NavDropdown.Item>
               <NavDropdown.Item href="#action3">Products with discount</NavDropdown.Item>
             </NavDropdown>
-
-            <Nav.Link >Kids Item</Nav.Link>
             <Nav.Link >Contact</Nav.Link>
           </Nav>
 
@@ -82,12 +120,13 @@ function NavBar() {
     className="d-flex flex-grow-1 mx-2"
     style={{ minWidth: 0 }}  // important: prevents overflow
   >
-    <Form.Control
+      <Form.Control
       type="search"
       placeholder="Search"
       className="me-2 d-flex"
       aria-label="Search"
       style={{ flex: 1, minWidth: 0 }}
+      value={input} onChange={(e)=>handlechange(e.target.value)}
     />
     <Button
       variant="outline-dark"
@@ -96,9 +135,14 @@ function NavBar() {
         flexShrink: 0,
         color:theme==="light"?"#222":"#fff"
       }}
+      onClick={()=>{navigate('/searchProducts',{state:{result}});}}
     >
       Search
     </Button>
+    <center>
+      <SearchList result={result} />
+    </center>
+
   </Form>
 
           {/* Icons (desktop only) */}
@@ -109,14 +153,44 @@ function NavBar() {
               </Button>
             </Link>
             <Switch {...label} title="theme" onClick={toggletheme} />
-            <IconButton component={Link} to='/cartView'>
+            <IconButton component={Link} to='/cartView' style={{color:theme==="light"?"#6e6a6aff":"#fff"}}>
             <Badge badgeContent={cart.length} color='primary'>
               <ShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton>
+
+            
+
+        <IconButton id="basic-button"
+        aria-controls={op ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={op ? 'true' : undefined}
+        onClick={handleClick} style={{color:theme==="light"?"#6e6a6aff":"#fff"}} >
               <PersonIcon />
             </IconButton>
+
+             <div>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={op}
+        onClose={handleClose}
+        slotProps={{
+          list: {
+            'aria-labelledby': 'basic-button',
+          },
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={()=>{
+          handleClose();
+          localStorage.removeItem('token');
+          logout();
+        }}>Logout</MenuItem>
+      </Menu>
+    </div>
+
           </div>
 
           {/* Drawer Toggle (only small/medium screens) */}

@@ -4,9 +4,7 @@ import { useRef } from "react";
 import { IconButton } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
 import { Typography } from "@mui/material"
-
 //carousel 
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
@@ -31,9 +29,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const API="http://localhost:4000"
 
-
+const API=process.env.REACT_APP_BACKEND_URL;
 
 function Home() {
  
@@ -126,8 +123,7 @@ function Home() {
         </IconButton>
 
         {/* Scrollable Products */}
-        <div
-          ref={scrollRef}
+        <div ref={scrollRef}
           className="d-flex overflow-auto"
           style={{ scrollbarWidth: "none", height: "140px", flex: 1 }}
         >
@@ -177,10 +173,7 @@ function Home() {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-
     {/* carousel ends */}
-
-    
     {/* card starts */}
     
     <Typography className="mt-4" variant="h4">Top Selling Products</Typography>
@@ -306,7 +299,6 @@ function Home() {
       </CardActions>
     </Card>
       </div>
-
     </div>
     </div>
 

@@ -5,7 +5,7 @@ import Rating from '@mui/material/Rating';
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 
-const API="http://localhost:4000"
+const API=process.env.REACT_APP_BACKEND_URL;
 
 function Beverages() {
 
@@ -38,7 +38,7 @@ const[Beverages,setBeverages]=useState([]);
        <div className='container-fluid fixed-top' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
-      <h3 className='mt-3' >Healthy Dairy Products</h3>
+      <h3 className='mt-3' >Refreshing Beverages for Every Occasion</h3>
        <div className='container-fluid' >
       {/* Heading tag */}
       
@@ -54,7 +54,7 @@ const[Beverages,setBeverages]=useState([]);
              <label style={{marginLeft:"5px"}} for="Popular">Most Popular</label>
              
              <input style={{marginLeft:"10px"}} type='radio'   name='poular' className='radioinput'></input>
-             <label style={{marginLeft:"5px"}}  for="Popular">Cheapest</label>
+             <label style={{marginLeft:"5px"}}  for="Popular">Trending</label>
              </div>
            </form>
         </div>
@@ -88,8 +88,8 @@ const[Beverages,setBeverages]=useState([]);
       </div>
 
 
-      <div className='container-fluid row ' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"170px"}}>
-        <div className='col-md-3 ' >
+      <div className='container-fluid row' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"170px"}}>
+        <div className='col-md-3 sidebar' >
       <div className='container mt-2 rounded' style={{height:"550px",width:"300px",position:"fixed",border:"solid lightgray 1px"}}>
         <div >
           <h5 className='mt-3 ms-3'>Categories</h5>
@@ -164,10 +164,10 @@ const[Beverages,setBeverages]=useState([]);
       </div>
       
       {/* Products - fruit display starts */}
-     <div className='col-md-9 mt-2' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+     <div className='col-md-9 col-md-3 mt-2' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <div className='row gy-5'>
         {Beverages.map((bv)=>(
-          <div className='col-12 col-sm-6 col-md-3' key={bv._id}>
+          <div className=' col-12 col-sm-6 col-md-3' key={bv._id}>
           <div className='card border-secondary' style={{maxWidth:"250px"}}>
             <div className='card-header' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",textAlign:"center"}} >
               <img src={`${API}/${bv.path}`} alt='apple' height={150} width={150}></img>

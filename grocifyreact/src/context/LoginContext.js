@@ -17,10 +17,16 @@ function LoginContext({children}) {
         setMobile(mobile);
         console.log(mobile)
      }
+
+     function logout(){
+      setUser("")
+      setEmail("")
+      setMobile("")
+     }
      
   return (
     <div>
-      <Loginverify.Provider value={{email,mobile,user,loginuser,loginemail,loginmobile}}>
+      <Loginverify.Provider value={{email,mobile,user,loginuser,loginemail,loginmobile,logout}}>
         {children}
       </Loginverify.Provider>
     </div>

@@ -5,7 +5,7 @@ import Rating from '@mui/material/Rating';
 import { useCart } from '../../context/CartContext';
 import { useTheme } from '../../context/ThemeContext';
 
-const API="http://localhost:4000"
+const API=process.env.REACT_APP_BACKEND_URL;
 
 
 function Chocolates() {
@@ -35,7 +35,7 @@ function Chocolates() {
        <div className='container-fluid fixed-top' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
-      <h3 className='mt-3'>Healthy Dairy Products</h3>
+      <h3 className='mt-3'>Delicious Chocolates & Sweet Treats</h3>
        <div className='container-fluid' >
       {/* Heading tag */}
       

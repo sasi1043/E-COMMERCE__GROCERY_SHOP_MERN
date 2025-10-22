@@ -3,19 +3,22 @@ import NavBar from '../../components/NavBar';
 import axios from 'axios';
 import Rating from '@mui/material/Rating';
 import { useCart } from '../../context/CartContext';
+import { useTheme } from '../../context/ThemeContext';
 
-const API="http://localhost:4000"
+const API=process.env.REACT_APP_BACKEND_URL;
 
-function AllTimeBest() {
 
-    const {addCart}=useCart();  
+function Kids() {
 
-   const[alltime,setAlltime]=useState([]);
+  const {addCart}=useCart();
+  const {theme}=useTheme();
+
+    const[kids,setKids]=useState([]);
     
     async function load(){
         try{
-            const res =await axios.get(`${API}/api/products/AllTimeBest`);
-            setAlltime(res.data);
+            const res =await axios.get(`${API}/api/KidsFavourite`);
+            setKids(res.data);
         }
         catch(e){
             console.error(e);
@@ -25,14 +28,11 @@ function AllTimeBest() {
     useEffect(()=>{
         load();
     },[])
-    
-
-
 
   return (
     <>
     {/* Navbar */}
-       <div className='container-fluid fixed-top bg-white'>
+       <div className='container-fluid fixed-top' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
       <h3 className='mt-3'>Healthy Dairy Products</h3>
@@ -40,30 +40,30 @@ function AllTimeBest() {
       {/* Heading tag */}
       
 
-      <div className='row bg-white' >
+      <div className='row ' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
         <div className='col-md-6'>
       <div className='d-flex' >
         
-        <div className=' mt-2 bg-light p-2 rounded'>
+        <div className=' mt-2  p-2 rounded' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
            <form >
             <div className='mt-1' >
              <input type='radio'  name='poular' className='radioinput'></input>
              <label style={{marginLeft:"5px"}} for="Popular">Most Popular</label>
              
              <input style={{marginLeft:"10px"}} type='radio'   name='poular' className='radioinput'></input>
-             <label style={{marginLeft:"5px"}}  for="Popular">Cheapest</label>
+             <label style={{marginLeft:"5px"}}  for="Popular">Trending</label>
              </div>
            </form>
         </div>
 
         {/* Filter section */}
-        <div className='mx-2 mt-2 bg-light p-2 rounded' >
+        <div className='mx-2 mt-2 p-2 rounded' >
            <form className='mt-1' >
              <input style={{marginLeft:"5px"}} type='radio'  name='poular' ></input>
              <label style={{marginLeft:"5px"}}  for="Popular">Organic Farm</label>
            </form>
         </div>
-        <div className='mx-2 mt-2 bg-light p-2 rounded'>
+        <div className='mx-2 mt-2  p-2 rounded'>
            <form >
              <select className='form-control' >
               <option>India</option>
@@ -86,48 +86,42 @@ function AllTimeBest() {
       </div>
 
 
-      <div className='container-fluid row' style={{marginTop:"180px"}}>
+      <div className='container-fluid row' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"170px"}}>
         <div className='col-md-3 ' >
-      <div className='container  mt-2 rounded' style={{height:"550px",width:"300px",position:"fixed",backgroundColor:"white",border:"solid lightgray 1px"}}>
+      <div className='container  mt-2 rounded' style={{height:"550px",width:"300px",position:"fixed",border:"solid lightgray 1px"}}>
         <div >
           <h5 className='mt-3 ms-3'>Categories</h5>
           <div className='ms-5'>
-          <p>NoteBook</p>
-          <p></p>
-          <p>Chees & paneer</p>
-          <p>Milk Poweders</p>
+          <p>Dairy Products</p>
+          <p>Bakery & Bread</p>
+          <p>Sugar & Sweeteners</p>
+          <p>Fruits & Vegetables</p>
           </div>
         </div>
         <div >
-          <h5 className='mt-3 ms-3'>Brands</h5>
+          <h5 className='mt-3 ms-3'>Price Range</h5>
           <div className='ms-5'>
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Amul</label>
+              <label for="tropicana" className='form-label mx-2 '>₹0 - ₹50</label>
             </div>
           
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Aavin</label>
+              <label for="tropicana" className='form-label mx-2 '>₹50 - ₹150</label>
             </div>
           
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Britania</label>
+              <label for="tropicana" className='form-label mx-2 '>₹150 - ₹250</label>
             </div>
           
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Nestle</label>
-            </div>
-          
-           
-            <div>
-              <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Mother Diary</label>
+              <label for="tropicana" className='form-label mx-2 '>₹250 above</label>
             </div>
           
           
@@ -158,25 +152,25 @@ function AllTimeBest() {
         </div>
 
        </div>
-        {/* Sidebar ends */}
+       {/* Sidebar ends */}
       </div>
       
       {/* Products - fruit display starts */}
-     <div className='col-md-9 mt-2'>
+     <div className='col-md-9 mt-2' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <div className='row gy-5'>
-        {alltime.map((st)=>(
-          <div className='col-12 col-sm-6 col-md-3' key={st._id}>
+        {kids.map((ch)=>(
+          <div className='col-12 col-sm-6 col-md-3' key={ch._id}>
           <div className='card border-secondary' style={{maxWidth:"250px"}}>
-            <div className='card-header' style={{textAlign:"center"}}>
-              <img src={`${API}/${st.path}`} alt='Healthcare' height={150} width={150}></img>
+            <div className='card-header' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",textAlign:"center"}}>
+              <img src={`${API}/${ch.path}`} alt='apple' height={150} width={150}></img>
             </div>
-            <div className='card-body'>
-              <h6>{st.name}</h6>
-              <p>{st.description}</p>
-              <Rating  name="size-small" defaultValue={st.rating} style={{color:"black"}} size="small" />
+            <div className='card-body' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+              <h6>{ch.name}</h6>
+              <p>{ch.description}</p>
+              <Rating  name="size-small" defaultValue={ch.rating}  size="small" />
               <div className='d-flex justify-content-between  align-items-center'>
-                <h6  className='mt-1 fw-bold'>₹ {st.price}/packet</h6>
-                <button style={{borderRadius:"25px" ,backgroundColor:"black",color:"white"}} onClick={()=>addCart(st)}>Add To Cart</button>
+                <h6  className='mt-1 fw-bold'>₹{ch.price}/{ch.measure}</h6>
+                <button style={{borderRadius:"25px"}} onClick={()=>addCart(ch)}>Add To Cart</button>
               </div>
             </div>
           </div>
@@ -192,4 +186,4 @@ function AllTimeBest() {
   )
 }
 
-export default AllTimeBest
+export default Kids

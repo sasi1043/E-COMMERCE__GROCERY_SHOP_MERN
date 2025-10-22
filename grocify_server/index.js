@@ -22,6 +22,10 @@ const Stationary=require('./Gettingimages/Stationary')
 const payment=require('./routes/Payment.js');
 const allTime=require('./Gettingimages/AllTime.js');
 const NewProducts=require('./Gettingimages/NewProd.js')
+const {search}=require('./models/model.js')
+const DailyEss=require('./Gettingimages/DailyEss.js')
+const cooking=require('./Gettingimages/Cooking.js')
+const kids=require('./Gettingimages/Kids.js')
 // const postimage=require('./Gettingimages/Renderimage')
 
 const app=express()
@@ -88,10 +92,36 @@ app.use('/api/products/AllTimeBest',allTime);
 app.use('/api/NewProducts',NewProducts)
 
 
+//posting  and getting new Daily Essential products
+app.use('/api/DailyEssentials',DailyEss)
+
+
+//posting  and getting new Cooking Products products
+app.use('/api/Cooking',cooking)
+
+
+//posting  and getting new Kids FAvourite products
+app.use('/api/KidsFavourite',kids)
+
+
 //payment Gateway::
 app.use("/paymentprocess",payment)
 app.use("/getkey",payment)
 app.use("/api",payment)
+
+//for searchBar
+app.post("/api/search",async(req,res)=>{
+    try{
+        const q= req.body.query || "a"
+        const prod=await  search.find({
+            name:{$regex:q,$options:"i"},
+    }).sort({createdAt:-1}).limit(3)
+    return res.status(200).json({prod})
+    }
+    catch(e){
+        console.error({message:e.message})
+    }
+});
 
 
 app.listen(4000,()=>console.log("app is running in the http://localhost:4000 port"));
