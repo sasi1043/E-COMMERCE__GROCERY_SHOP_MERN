@@ -115,7 +115,7 @@ app.post("/api/search",async(req,res)=>{
         const q= req.body.query || "a"
         const prod=await  search.find({
             name:{$regex:q,$options:"i"},
-    }).sort({createdAt:-1}).limit(3)
+    }).sort({createdAt:-1})
     return res.status(200).json({prod})
     }
     catch(e){

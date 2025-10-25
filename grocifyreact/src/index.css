@@ -89,4 +89,50 @@ code {
  .sidebar{
   display: none;
  }
+
+}
+
+/* for small screen */
+@media (max-width: 1000px){
+    .topmar{
+  padding-top: 250px;
+}
+.head-filter{
+  display: none;
+}
+.heading{
+  font-size: 20px;
+}
+
+.addcart{
+  font-size: 9px;
+  max-width: 90px;
+  background-color: lightgrey;
+  color: black;
+
+}
+.img-prod{
+  width: 80px;
+  height: 100px;
+}
+.card-width{
+  max-width: 190px;
+}
+}
+
+/* for big screen */
+@media (min-width:1000px){
+  .topmar{
+  padding-top: 180px;
+}
+.filter-btn{
+  display: none;
+}
+.img-prod{
+  width: 150px;
+  height: 150px;
+}
+.card-width{
+  max-width: 250px;
+}
 }

@@ -14,7 +14,6 @@ const SearchList = ({ result }) => {
         position: "absolute",
         top: "100%",
         left: 0,
-        width: "600px",
         color:"white",
         backgroundColor: "black",
         border: "1px solid #333",
@@ -25,6 +24,7 @@ const SearchList = ({ result }) => {
       }}
     >
       {result.map((k) => (
+        <center>
         <div
           key={k._id}
           style={{
@@ -41,6 +41,7 @@ const SearchList = ({ result }) => {
         >
           {k.name}
         </div>
+        </center>
       ))}
     </div>
   );

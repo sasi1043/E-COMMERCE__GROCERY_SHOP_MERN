@@ -104,7 +104,7 @@ const totalPrice = cart.reduce((total, item) => {
 
   return (
     <>
-     <div className='container-fluid fixed-top '  style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+     <div className='container-fluid fixed-top'  style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
       <h3 className='mt-3 ms-3'>My Cart</h3>
@@ -124,9 +124,6 @@ const totalPrice = cart.reduce((total, item) => {
              
              <input style={{marginLeft:"20px"}} type='radio'   name='poular' className='radioinput'></input>
              <label style={{marginLeft:"5px"}}  for="Popular">OnGoing</label>
-             
-             <input style={{marginLeft:"20px"}} type='radio'   name='poular' className='radioinput'></input>
-             <label style={{marginLeft:"5px"}}  for="Popular">Returned</label>
              
              <input style={{marginLeft:"20px"}} type='radio'   name='poular' className='radioinput'></input>
              <label style={{marginLeft:"5px"}}  for="Popular">Cancelled</label>
@@ -152,11 +149,11 @@ const totalPrice = cart.reduce((total, item) => {
         
       </div>
     ):(
-      <div className='container-fluid row ms-0 vh-100' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"120px",marginBottom:"90px"}}>
-            <div className='row gy-5'>
+      <div className='container-fluid row ms-0 w-100 h-100' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"120px",marginBottom:"90px"}}>
+            <div className='row gy-5' style={{paddingBottom:"130px"}}>
               {cart.map((item)=>(
-                <div className='col-12 col-sm-6 col-md-3 pb-4' key={item._id}>
-                <div className='card border-secondary' style={{maxWidth:"250px"}}>
+                <div className='col-12 col-sm-6 col-md-3 pb-4'  key={item._id}>
+                <div className='card border-secondary w-100 h-100'>
                   <div className='card-header' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",textAlign:"center"}}>
                     <img src={`${API}/${item.path}`} alt='apple' height={150} width={150}></img>
                   </div>

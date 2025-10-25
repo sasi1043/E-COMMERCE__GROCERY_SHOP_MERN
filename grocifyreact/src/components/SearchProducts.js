@@ -22,7 +22,7 @@ const SearchProducts = () => {
        <div className='container-fluid fixed-top' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
-      <h3 className='mt-3' >Healthy Dairy Products</h3>
+      <h3 className='mt-3' >Search Results</h3>
        <div className='container-fluid' >
       {/* Heading tag */}
       
@@ -44,12 +44,7 @@ const SearchProducts = () => {
         </div>
 
         {/* Filter section */}
-        <div className='mx-2 mt-2  p-2 rounded' >
-           <form className='mt-1' >
-             <input style={{marginLeft:"5px"}} type='radio'  name='poular' ></input>
-             <label style={{marginLeft:"5px"}}  for="Popular">Cool Drinks</label>
-           </form>
-        </div>
+
         <div className='mx-2 mt-2 p-2 rounded'>
            <form >
              <select className='form-control' >
@@ -70,43 +65,32 @@ const SearchProducts = () => {
       </div>
       </div>
       </div>
-
-
-      <div className='container-fluid row ' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",marginTop:"170px"}}>
              
             
             {/* Products - fruit display starts */}
-           <div className='col-md-9 mt-2' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
-            <div className='row gy-5'>
-              {result.map((k)=>(
-                <div className='col-12 col-sm-6 col-md-4' key={k._id}>
-                <div className='card border-secondary' style={{maxWidth:"250px"}}>
-                  <div className='card-header' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",textAlign:"center"}} >
-                    <img src={`${API}/${k.path}`} alt='apple' height={150} width={150}></img>
-                  </div>
-                  <div className='card-body' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
-                    <h6>{k.name}</h6>
-                    <p>{k.description}</p>
-                    <Rating  name="size-small" defaultValue={k.rating}  size="small" />
-                    <div className='d-flex justify-content-between  align-items-center' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
-                      <h6  className='mt-1 fw-bold'>₹ {k.price}/{k.measure}</h6>
-                      <button style={{borderRadius:"25px" }} onClick={()=>addCart(k)}>Add To Cart</button>
-                    </div>
-                  </div>
-                </div>
+      <div className='row gy-4 ms-1 me-1 topmar ' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+        {result.map((item)=>(
+          <div className='col-6  col-md-3' key={item._id}>
+          <div className='card border-secondary h-100' style={{maxWidth:"300px"}}>
+            <div className='card-header' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff",textAlign:"center"}} >
+              <img src={`${API}/${item.path}`} alt='apple' className='img-prod' width={150} height={150}></img>
+            </div>
+            <div className='card-body' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+              <h6>{item.name}</h6>
+              <p>{item.description}</p>
+              <Rating  name="size-small" defaultValue={item.rating}  size="small" />
+              <div className='d-flex justify-content-between  align-items-center' style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
+                <div><h6  className='mt-1 fw-bold'>₹ {item.price}/pkt</h6></div>
+                <button className='addcart' style={{borderRadius:"25px"}} onClick={()=>addCart(item)}>Add To Cart</button>
               </div>
-              ))}
-              
             </div>
-           </div>
+          </div>
+        </div>
+        ))}
+        
+      </div>
+     </div>
       
-            </div>
-
-
-
-
-      
-    </div>
   )
 }
 
