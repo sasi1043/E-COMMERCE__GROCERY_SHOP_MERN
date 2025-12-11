@@ -1,0 +1,181 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.homeproducts:hover{
+  cursor: pointer;
+}
+
+.paymentSuccess{
+  padding: 30px;
+  border: 2px dotted darkgreen;
+  background-color: lightgreen;
+}
+.refID{
+  background-color: white;
+  max-width:fit-content;
+  margin-left: 100px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    flex: 1;
+  }
+
+  .navbar .container-fluid {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between {
+    flex-wrap: wrap !important;
+  }
+
+  /* Row 1: Brand + Toggle + Cart */
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between > .navbar-brand,
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between > .navbar-toggler,
+  .navbar .container-fluid > .d-flex.align-items-center.justify-content-between > .d-none.d-lg-flex.align-items-center.ms-auto {
+    order: 1;
+    display: inline-flex !important;
+    align-items: center;
+    margin-right: 5px;
+  }
+
+  /* Search bar moves to next row */
+  .navbar .container-fluid form.d-flex {
+    order: 2;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .navbar .container-fluid form.d-flex input {
+    width: 100%;
+  }
+
+  .navbar .container-fluid form.d-flex button {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar .navbar-toggler {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    outline: none;
+    background: transparent !important;
+  }
+
+  .navbar .container-fluid {
+    position: relative;
+  }
+}
+
+@media (max-width: 1000px){
+ .sidebar{
+  display: none;
+ }
+
+}
+
+/* for small screen */
+@media (max-width: 600px){
+    .topmar{
+  padding-top: 250px;
+}
+.head-filter{
+  display: none;
+}
+.heading{
+  font-size: 20px;
+}
+
+.addcart{
+  font-size: 9px;
+  max-width:120px;
+  background-color: lightgrey;
+  color: black;
+
+}
+.img-prod{
+  width: 80px;
+  height: 100px;
+}
+.card-width{
+  max-width: 190px;
+}
+}
+
+/* for big screen */
+@media (min-width:1000px){
+  .topmar{
+  padding-top: 180px;
+}
+.filter-btn{
+  display: none;
+}
+.img-prod{
+  width: 150px;
+  height: 150px;
+}
+.card-width{
+  max-width: 250px;
+}
+.arrow-home{
+  display: none !important;
+}
+}
+/* for medium screen */
+
+@media (max-width:1000px) {
+  .arrow-home{
+    display: none !important;
+  }
+}
+
+.contact-input{
+max-width: 200px;
+}
+
+.feedback{
+  border: 1px dotted;
+  border-radius: 30px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.fan-wrapper {
+  position: relative;
+  height: 200px;     /* adjust as needed */
+  width: 300px;      /* adjust for more/less images */
+}
+
+.fan-img {
+  position: absolute;
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  transition: 0.3s;
+}
+
+/* Optional: Spread more on hover */
+.fan-img:hover {
+  transform: scale(1.1) !important;
+  z-index: 999;
+}
