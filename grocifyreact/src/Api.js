@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL:"https://e-commerce-grocery-shop-mern-1.onrender.com"
+    baseURL:"http://localhost:4000"
 })
 
 //to attach jwt token

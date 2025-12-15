@@ -7,7 +7,7 @@ const {orderModel}=require('../models/model.js')
 router.get("/:orderID",async(req,res)=>{
     try{
         const orderID = req.params.orderID;
-    const orders = await orderModel.find({ orderID }).sort({date:-1});
+    const orders = await orderModel.find({ orderID }).sort({date:-1},{ unique: true });
    if(! orders) return res.status(404).send("no orders found");
     res.json(orders);
     }

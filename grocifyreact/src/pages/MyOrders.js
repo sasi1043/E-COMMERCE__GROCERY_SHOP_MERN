@@ -107,6 +107,15 @@ function MyOrders() {
 
     </div>
     {/* end of filter column */}
+      
+      {orders.length===0?(
+          <div
+      className="d-flex justify-content-center align-items-center mt-5"
+      style={{ fontSize: "20px", opacity: 0.8 }}
+    >
+     Your order list is empty
+    </div>
+      ):(
          <div className='row'>
           <div className='col-md-2'></div>
          {/* col for space */}
@@ -160,6 +169,9 @@ function MyOrders() {
             
         </div>
         </div> 
+      )}
+       
+         
         
          </div>
 

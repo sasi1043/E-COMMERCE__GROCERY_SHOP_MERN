@@ -114,7 +114,7 @@ const totalPrice = cart.reduce((total, item) => {
     const {data:orderData}=await axios.post(`${API}/paymentprocess`,{amount})
     
     const {order}=orderData;
-    console.log(order);
+    console.log("order",order);
     //for open razorpay for payment process
 
     const options={
@@ -124,7 +124,15 @@ const totalPrice = cart.reduce((total, item) => {
       name:user,
       description:'Payment React App',
       order_id:order.id,
-      callback_url:`${API}/api/paymentVerification`,
+      handler: async function (response) {
+        console.log(response)
+  const verify = await axios.post(`${API}/api/paymentVerification`, response);
+
+  if (verify.data.success) {
+    localStorage.setItem("reference",verify.data.reference)
+    navigate('/paymentSuccess');
+  }
+},
       prefill:{
         name:user,
         email,

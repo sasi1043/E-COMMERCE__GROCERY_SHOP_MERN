@@ -1,15 +1,15 @@
-import { useLocation } from "react-router-dom";
 import { useLoginVerify } from '../context/LoginContext';
 import { jwtDecode } from 'jwt-decode';
 import { useCallback, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import API from "../Api";
 
-function Confirm() {
-  const query = new URLSearchParams(useLocation().search);
-  const referance = query.get("referance") || "";
+import { useRef } from "react";
 
-  // for restoring user data
+function Confirm() {
+  const referance = localStorage.getItem("reference")
+
+  const hasOrdered = useRef(false);
 
 // Call useLoginVerify only ONE time
 const { loginuser, loginemail, loginuserID, id } = useLoginVerify();
@@ -64,7 +64,10 @@ const sendOrder = useCallback(async () => {
 // Always call useEffect at the top level
 useEffect(() => {
   restoreUser()
-  sendOrder();
+  if (!hasOrdered.current) {
+    hasOrdered.current = true;
+    sendOrder();
+  }
 }, [sendOrder,restoreUser]);
 
 

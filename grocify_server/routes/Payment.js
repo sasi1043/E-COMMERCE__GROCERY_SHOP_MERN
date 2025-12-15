@@ -29,27 +29,25 @@ router.get("/",async(req,res)=>{
     })
 })
 
-router.post("/paymentVerification",async(req,res)=>{
+router.post("/paymentVerification", async (req, res) => {
+  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
 
-  const {razorpay_payment_id,razorpay_order_id,razorpay_signature}=req.body;
-  const body=razorpay_order_id+ "|"+razorpay_payment_id;
-  const expectedSignature=crypto.createHmac("sha256",process.env.RAZORPAY_API_SECRET).update(body.toString()).digest("hex");
-  console.log(`Razorpay Signature,${razorpay_signature}`);
-  console.log(`expected Signature,${razorpay_signature}`);
+  const body = razorpay_order_id + "|" + razorpay_payment_id;
+  const expectedSignature = crypto
+    .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
+    .update(body)
+    .digest("hex");
 
-   const check=expectedSignature===razorpay_signature;
-   if (check) {
-  return res.redirect(
-    `${process.env.FRONTEND_URL}/paymentSuccess?referance=${razorpay_payment_id}`
-  );
-}
-
-   else{
-    res.status(404).json({
-        success:false
-    })
-   }
-})
+  if (expectedSignature === razorpay_signature) {
+    console.log(razorpay_payment_id);
+    return res.status(200).json({
+      success: true,
+      reference: razorpay_payment_id,
+    });
+  } else {
+    return res.status(400).json({ success: false });
+  }
+});
 
 
 module.exports=router;
