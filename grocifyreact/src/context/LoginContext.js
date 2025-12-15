@@ -22,7 +22,7 @@ export default function LoginContext({children}) {
      }
      function loginuserID(id){
         setId(id);
-      //   console.log(id)
+        console.log(id)
      }
 
 

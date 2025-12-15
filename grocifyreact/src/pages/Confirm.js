@@ -11,11 +11,14 @@ function Confirm() {
 
   // for restoring user data
 
-  const { loginuser, loginemail, loginuserID } = useLoginVerify();
+// Call useLoginVerify only ONE time
+const { loginuser, loginemail, loginuserID, id } = useLoginVerify();
 
-  //  for restoring data after refreshing
+
+   //  for restoring data after refreshing
   const restoreUser = useCallback(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
+    console.log(token)
     if (!token) return;
 
     try {
@@ -28,19 +31,14 @@ function Confirm() {
     }
   }, [loginuser, loginemail, loginuserID]);
 
-  // useEffect now has NO missing dependencies
-  useEffect(() => {
 
-    restoreUser();
-  }, [restoreUser]);
-
-   const {id}=useLoginVerify();
    const {clearCart,cart}=useCart()
    const {price}=useCart();
 
   console.log("reference",referance)
   // Always define the hook at the top level
 const sendOrder = useCallback(async () => {
+  console.log(id)
   if (!id || !referance || cart.length === 0) return; // handle conditions inside
 
     const now=new Date();
@@ -65,8 +63,9 @@ const sendOrder = useCallback(async () => {
 
 // Always call useEffect at the top level
 useEffect(() => {
+  restoreUser()
   sendOrder();
-}, [sendOrder]);
+}, [sendOrder,restoreUser]);
 
 
 

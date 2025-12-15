@@ -80,6 +80,7 @@ const totalPrice = cart.reduce((total, item) => {
   //  for restoring data after refreshing
   const restoreUser = useCallback(() => {
     const token = localStorage.getItem("token");
+    console.log(token)
     if (!token) return;
 
     try {

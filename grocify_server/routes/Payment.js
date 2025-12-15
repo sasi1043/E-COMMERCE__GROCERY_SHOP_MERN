@@ -29,7 +29,7 @@ router.get("/",async(req,res)=>{
     })
 })
 
-router.post("/paymentverification",async(req,res)=>{
+router.post("/paymentVerification",async(req,res)=>{
 
   const {razorpay_payment_id,razorpay_order_id,razorpay_signature}=req.body;
   const body=razorpay_order_id+ "|"+razorpay_payment_id;
@@ -39,7 +39,7 @@ router.post("/paymentverification",async(req,res)=>{
 
    const check=expectedSignature===razorpay_signature;
    if(check){
-    return res.redirect(`https://grocify-rluk.onrender.com/paymentSuccess?referance=${razorpay_payment_id}`);
+    return res.redirect(`http://localhost:3000/paymentSuccess?referance=${razorpay_payment_id}`);
    }
    else{
     res.status(404).json({

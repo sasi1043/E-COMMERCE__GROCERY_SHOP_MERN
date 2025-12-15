@@ -37,16 +37,6 @@ app.use(cors())
 app.use(express.static("Homeimagess"))
 app.use(express.urlencoded({extended:true}));
 
-
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, "../client/build")));
-
-// For all unknown routes, serve React's index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
-
-
 db();
 
 //register
@@ -128,15 +118,6 @@ app.use('/api/discount',discount);
 app.use("/paymentprocess",payment)
 app.use("/getkey",payment)
 app.use("/api",payment)
-
-app.use("/api/razorpay", require("./routes/razorpay"));
-// other API routes...
-
-// Serve React for frontend routes
-app.use(express.static(path.join(__dirname, "../client/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});
 
 //for getting orders::
 app.use("/api/orders",order);

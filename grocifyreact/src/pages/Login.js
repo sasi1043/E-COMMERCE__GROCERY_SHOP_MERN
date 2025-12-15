@@ -78,15 +78,15 @@ function Login() {
   try {
     const{data:res}=await API.post('/api/login',login)
     localStorage.setItem("token",res.token);
-
+  console.log(res.token)
      const decode=jwtDecode(res.token)
 
-    loginuser(res.name)
-    loginemail(res.email);
-    loginmobile(res.mobile);
+    loginuser(decode.name)
+    loginemail(decode.email);
+    loginmobile(decode.mobile);
     loginuserID(decode.id);
     navigate('/');
-
+    console.log(decode)
   } catch (error) {
     const msg=error?.response?.data || error?.response?.message ||'sign in failed'
     setError(typeof msg==='string'?msg:'sign in failed')
