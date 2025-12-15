@@ -42,7 +42,6 @@ export default function CartProvider({children}){
     function clearCart(){
         setCart([]);
         localStorage.removeItem("cart");
-        console.log(cart.length())
     }
     return(
         <CartContext.Provider value={{price,storeprice,cart,addCart,removeCart,clearCart}}>

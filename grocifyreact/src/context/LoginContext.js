@@ -34,10 +34,14 @@ export default function LoginContext({children}) {
       localStorage.removeItem("token");
       window.location.reload()
      }
+        
+     function homelogout(){
+      setUser("")
+     }
      
   return (
  
-      <Loginverify.Provider value={{email,mobile,user,loginuser,loginemail,loginmobile,logout,loginuserID,id}}>
+      <Loginverify.Provider value={{email,mobile,user,loginuser,loginemail,loginmobile,logout,loginuserID,id,homelogout}}>
         {children}
       </Loginverify.Provider>
   )

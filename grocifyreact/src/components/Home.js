@@ -42,6 +42,7 @@ function Home() {
    const[image,setImage]=useState([]);
    const[topsell,setTopsell]=useState([]);
    const[discount,setDiscount]=useState([]);
+   
 
    async function load(){
     try{
@@ -59,7 +60,7 @@ function Home() {
 
    useEffect(()=>{
     load()
-   },[])
+   })
 
 
    const [index, setIndex] = useState(0);
