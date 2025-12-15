@@ -7,7 +7,7 @@ import API from "../Api";
 
 function Confirm() {
   const query = new URLSearchParams(useLocation().search);
-  const referance = query.get("referance");
+  const referance = query.get("referance") || "";
 
   // for restoring user data
 

@@ -38,9 +38,12 @@ router.post("/paymentVerification",async(req,res)=>{
   console.log(`expected Signature,${razorpay_signature}`);
 
    const check=expectedSignature===razorpay_signature;
-   if(check){
-    return res.redirect(`http://localhost:3000/paymentSuccess?referance=${razorpay_payment_id}`);
-   }
+   if (check) {
+  return res.redirect(
+    `${process.env.FRONTEND_URL}/paymentSuccess?referance=${razorpay_payment_id}`
+  );
+}
+
    else{
     res.status(404).json({
         success:false
