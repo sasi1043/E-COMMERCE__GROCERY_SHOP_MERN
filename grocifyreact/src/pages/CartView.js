@@ -104,6 +104,11 @@ const totalPrice = cart.reduce((total, item) => {
 //buy now page navigation after clicking buy now button::
 
    const buynowBut=async(amount,user,email,mobile)=>{
+
+    if(cart.length===0){
+      alert("add Products to the Cart")
+      return 0;
+    }
      // for getting razorpay api key
      storeprice(amount)
     

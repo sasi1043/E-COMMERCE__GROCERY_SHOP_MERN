@@ -42,6 +42,7 @@ function Home() {
    const[image,setImage]=useState([]);
    const[topsell,setTopsell]=useState([]);
    const[discount,setDiscount]=useState([]);
+
    
 
    async function load(){
@@ -59,7 +60,8 @@ function Home() {
    }
 
    useEffect(()=>{
-    load()
+    load();
+    localStorage.removeItem("token");
    })
 
 
@@ -159,24 +161,22 @@ function Home() {
       <Carousel.Item>
       <img src={caroimg1} alt="carosel " width={1500} height={300}></img>
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Fresh Daily Essentials</h3>
+          <p>Handpicked fruits, vegetables, and groceries delivered fresh every day.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
       <img src={caroimg} alt="carosel " width={1500} height={300}></img>
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Black Friday Mega Deals</h3>
+          <p>Unbeatable discounts on groceries and daily essentials—today only!</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
       <img src={caros4} alt="carosel "width={1500} height={300} ></img>
         <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          <h3>Flat 50% OFF</h3>
+          <p>Enjoy half-price savings on selected groceries and essentials.</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

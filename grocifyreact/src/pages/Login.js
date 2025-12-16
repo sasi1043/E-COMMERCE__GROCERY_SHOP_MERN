@@ -112,6 +112,7 @@ function Login() {
         <Typography variant='h4' style={{fontWeight:'bolder',marginTop:'20%'}}>Login</Typography>
         <div style={{marginTop:'15%'}}>
         {error && <div className="alert alert-danger">{error}</div>}
+        <Form onSubmit={loginbutton}>
         <Form.Control name='email'  style={{border:'1px solid black'}} size="md" type='email' placeholder="Enter your email" onChange={loginhandlechange} required/>
       <br />
       <Form.Control name='password' style={{marginTop:'5%',border:'1px solid black'}} type='password' placeholder="Enter your password"  onChange={loginhandlechange} required/>
@@ -121,11 +122,13 @@ function Login() {
 
       <center>
       <Button type='submit' variant="contained" style={{backgroundColor:'black'}} onClick={loginbutton}>Login</Button>
+      
       <br></br>
       or
       <br></br>
       <Button className='mt-2' variant="contained" style={{backgroundColor:'black'}} onClick={handleOpen}>Sign Up</Button>
       </center>
+      </Form>
       
       </div>
         

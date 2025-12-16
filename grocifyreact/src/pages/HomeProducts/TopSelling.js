@@ -40,6 +40,8 @@ function TopSelling() {
   const {theme} = useTheme();
 
    const[topsell,setTopsell]=useState([]);
+
+   const [isExpanded, setIsExpanded] = useState(false);
     
     async function load(){
         try{
@@ -83,7 +85,7 @@ function TopSelling() {
        <div className='container-fluid fixed-top '  style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
       <NavBar/>
        
-      <h3 className='mt-3'>Stationery Products</h3>
+      <h3 className='mt-3'>Top Selling Products</h3>
        <div className='container-fluid' >
       {/* Heading tag */}
       
@@ -172,27 +174,27 @@ function TopSelling() {
           <div className='ms-5'>
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Writing Instruments</label>
+              <label for="tropicana" className='form-label mx-2 '>Fruits & Vegetables</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Paper Products</label>
+              <label for="tropicana" className='form-label mx-2 '>Cooking Oils & Ghee</label>
             </div>
           
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Office Supplies</label>
+              <label for="tropicana" className='form-label mx-2 '>Beverages</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Art Supplies</label>
+              <label for="tropicana" className='form-label mx-2 '>Biscuits & Snacks</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>School Stationary</label>
+              <label for="tropicana" className='form-label mx-2 '>Frozen Foods</label>
             </div>
           
           </div>
@@ -201,22 +203,22 @@ function TopSelling() {
           <div className='ms-5'>
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>NoteCraft</label>
+              <label for="tropicana" className='form-label mx-2 '>Britannia</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Classmate</label>
+              <label for="tropicana" className='form-label mx-2 '>Ferrero</label>
             </div>
           
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Apsara</label>
+              <label for="tropicana" className='form-label mx-2 '>Fortune</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>EcoWrite</label>
+              <label for="tropicana" className='form-label mx-2 '>Fresh Farms</label>
             </div>
           
           </div>
@@ -275,27 +277,27 @@ function TopSelling() {
           <div className='ms-5'>
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Writing Instruments</label>
+              <label for="tropicana" className='form-label mx-2 '>Fruits & Vegetables</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Paper Products</label>
+              <label for="tropicana" className='form-label mx-2 '>Cooking Oils & Ghee</label>
             </div>
           
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Office Supplies</label>
+              <label for="tropicana" className='form-label mx-2 '>Beverages</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Art Supplies</label>
+              <label for="tropicana" className='form-label mx-2 '>Biscuits & Snacks</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>School Stationary</label>
+              <label for="tropicana" className='form-label mx-2 '>Frozen Foods</label>
             </div>
           
           </div>
@@ -306,22 +308,22 @@ function TopSelling() {
           <div className='ms-5'>
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>NoteCraft</label>
+              <label for="tropicana" className='form-label mx-2 '>Britannia</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Classmate</label>
+              <label for="tropicana" className='form-label mx-2 '>Ferrero</label>
             </div>
           
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>Apsara</label>
+              <label for="tropicana" className='form-label mx-2 '>Fortune</label>
             </div>
            
             <div>
               <input type='checkbox' for="tropicana" className='form-check-input border-dark'></input>
-              <label for="tropicana" className='form-label mx-2 '>EcoWrite</label>
+              <label for="tropicana" className='form-label mx-2 '>Fresh Farms</label>
             </div>
           
           </div>
@@ -365,10 +367,12 @@ function TopSelling() {
             </div>
             <div className='card-body'  style={{backgroundColor:theme==="light"?"#fff":"#333",color:theme==="light"?"#222":"#fff"}}>
               <h6>{st.name}</h6>
-              <p>{st.description.slice(0,100)}</p>
+              <p>{isExpanded ? st.description : st.description.slice(0, 100)}{st.description.length > 100 && (
+              <span onClick={() => setIsExpanded(!isExpanded)} style={{ color: "blue", cursor: "pointer", marginLeft: "5px" }}>
+               {isExpanded ? "View Less" : "View More"} </span>)}</p>
               <Rating  name="size-small" defaultValue={st.rating}  size="small" />
               <div className='d-flex justify-content-between  align-items-center'>
-                <h6  className='mt-1 fw-bold'>₹ {st.price}/packet</h6>
+                <h6  className='mt-1 fw-bold'>₹ {st.price}/pckt</h6>
                 <button className='addcart' style={{borderRadius:"25px"}} onClick={()=>{addCart(st);snackClick()}}>Add To Cart</button>
                 <Snackbar
         open={snack}
