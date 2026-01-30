@@ -157,29 +157,31 @@ function Home() {
         {/* products display ends */}
 
       {/* carousel starts */}
+      <div className='img-fluid'>
       <Carousel className="mt-4" activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
-      <img src={caroimg1} alt="carosel " width={1500} height={300}></img>
+      <img src={caroimg1} alt="carosel " className='caros-img'></img>
         <Carousel.Caption>
           <h3>Fresh Daily Essentials</h3>
           <p>Handpicked fruits, vegetables, and groceries delivered fresh every day.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img src={caroimg} alt="carosel " width={1500} height={300}></img>
+      <img src={caroimg} alt="carosel " className='caros-img'></img>
         <Carousel.Caption>
           <h3>Black Friday Mega Deals</h3>
           <p>Unbeatable discounts on groceries and daily essentials—today only!</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img src={caros4} alt="carosel "width={1500} height={300} ></img>
+      <img src={caros4} alt="carosel " className='caros-img' ></img>
         <Carousel.Caption>
           <h3>Flat 50% OFF</h3>
           <p>Enjoy half-price savings on selected groceries and essentials.</p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    </div>
     {/* carousel ends */}
     {/* card starts */}
     

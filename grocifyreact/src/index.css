@@ -104,6 +104,11 @@ code {
   font-size: 20px;
 }
 
+.caros-img{
+  width: 300px;
+  height: 200px;
+}
+
 .addcart{
   font-size: 9px;
   max-width:120px;
@@ -138,6 +143,10 @@ code {
 .arrow-home{
   display: none !important;
 }
+.caros-img{
+  width: 1500px;
+  height: 300px;
+}
 }
 /* for medium screen */
 
@@ -145,6 +154,12 @@ code {
   .arrow-home{
     display: none !important;
   }
+
+  .caros-img{
+  width: 1000px;
+  height: 250px;
+}
+  
 }
 
 .contact-input{
@@ -157,6 +172,7 @@ max-width: 200px;
   padding-left: 10px;
   padding-bottom: 10px;
 }
+
 
 .fan-wrapper {
   position: relative;
@@ -173,6 +189,8 @@ max-width: 200px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   transition: 0.3s;
 }
+
+
 
 /* Optional: Spread more on hover */
 .fan-img:hover {
